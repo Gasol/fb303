@@ -1,0 +1,56 @@
+Source: fb303
+Section: devel
+Priority: optional
+Maintainer: Gasol Wu <gasol.wu@gmail.com>
+Build-Depends: debhelper (>= 8),
+ ant,
+ default-jdk,
+ perl (>= 5.8.0-7),
+ php5,
+ php5-dev,
+ python-all,
+ python-all-dev
+Standards-Version: 3.8.2
+Homepage: http://thrift.apache.org/
+
+Package: php5-fb303
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: PHP library for fb303
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
+
+Package: python-fb303
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Python library for fb303
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
+
+Package: libfacebook-fb303-perl
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Perl library for fb303
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
+
+Package: libfb303-java
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Java library for fb303
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
+
+Package: libfb303
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: C++ library for fb303
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
+
+Package: libfb303-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: C++ library for fb303 (Developement)
+ A standard interface to monitoring, dynamic options and configuration,
+ uptime reports, activity, etc.
