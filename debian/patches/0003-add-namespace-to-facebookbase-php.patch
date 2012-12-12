@@ -1,0 +1,11 @@
+--- a/php/FacebookBase.php
++++ b/php/FacebookBase.php
+@@ -18,6 +18,8 @@
+  * under the License.
+  */
+ 
++namespace FB303;
++
+ /**
+  * Abstract Class providing null implementation for FacebookService
+  * methods.

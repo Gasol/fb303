@@ -1,1 +1,3 @@
 0001-build-java-without-connection.patch
+0002-php-namespace.patch
+0003-add-namespace-to-facebookbase-php.patch
