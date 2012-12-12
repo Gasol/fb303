@@ -16,7 +16,8 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	cd cpp && make
-	cd java && ant -Dfb303.final.name=fb303-${VERSION} -Dthrift.groupid=org.apache.thrift -Dversion=0.9.0
+	cd java && ant -Dfb303.final.name=fb303-${VERSION} \
+		-Dthrift.groupid=org.apache.thrift -Dversion=${VERSION}
 
 override_dh_auto_install:
 	# CPP
