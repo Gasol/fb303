@@ -1,0 +1,17 @@
+--- a/cpp/Makefile.am
++++ b/cpp/Makefile.am
+@@ -59,10 +59,10 @@
+ # Shared -- multiple libraries can be defined
+ if SHARED
+ shareddir = $(prefix)/lib
+-shared_PROGRAMS = libfb303.so
+-libfb303_so_SOURCES = $(fb303_lib)
+-libfb303_so_CXXFLAGS = $(SHARED_CXXFLAGS)
+-libfb303_so_LDFLAGS = $(SHARED_LDFLAGS)
++shared_PROGRAMS = libfb303.so.1.0.0
++libfb303_so_1_0_0_SOURCES = $(fb303_lib)
++libfb303_so_1_0_0_CXXFLAGS = $(SHARED_CXXFLAGS)
++libfb303_so_1_0_0_LDFLAGS = $(SHARED_LDFLAGS) -Wl,-soname=libfb303.so.1
+ INTERNAL_LIBS =  libfb303.so
+ endif
+ 

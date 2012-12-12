@@ -14,10 +14,16 @@ override_dh_auto_configure:
 	thrift --gen php --out php if/fb303.thrift
 
 override_dh_auto_build:
-	cd cpp && make install DESTDIR=$(CURDIR)/debian/tmp
+	cd cpp && make \
+		ln -s libfb303.so.1 libfb303.so.1.0.0  && \
+		ln -s libfb303.so libfb303.so.1
 	cd java && ant -Dfb303.final.name=fb303-${VERSION}
 
 override_dh_auto_install:
+	# CPP
+	cd cpp && make install DESTDIR=$(CURDIR)/debian/tmp
+
+	# Python
 	cd $(CURDIR)/py && \
 	for py in $(PYVERS); do \
 		$$py setup.py install --root=$(CURDIR)/debian/python-fb303 \
