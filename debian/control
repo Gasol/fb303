@@ -45,7 +45,7 @@ Description: Java library for fb303
  A standard interface to monitoring, dynamic options and configuration,
  uptime reports, activity, etc.
 
-Package: libfb303
+Package: libfb303-1
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: C++ library for fb303
