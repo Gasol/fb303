@@ -10,6 +10,7 @@ Build-Depends: debhelper (>= 8),
  php5-dev,
  python-all (>= 2.6.6-3),
  python-all-dev (>= 2.6.6-3)
+Build-Depends-Indep: maven-repo-helper
 Standards-Version: 3.8.2
 Homepage: http://thrift.apache.org/
 
