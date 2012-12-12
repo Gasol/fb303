@@ -47,6 +47,8 @@ override_dh_auto_install:
 
 	# Java
 	mh_installpoms -plibfb303-java
+	mh_installjar -plibfb303-java -l java/build/fb303-${VERSION}.pom \
+		java/build/fb303-${VERSION}.jar
 
 override_dh_auto_clean:
 	-rm -rf perl
