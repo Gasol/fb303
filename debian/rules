@@ -20,7 +20,7 @@ override_dh_auto_install:
 	cd $(CURDIR)/py && \
 	for py in $(PYVERS); do \
 		$$py setup.py --root=$(CURDIR)/debian/python-fb303--prefix=/usr \
-			--install-layout=deb \
+			--install-layout=deb; \
 	done
 
 	# Perl
