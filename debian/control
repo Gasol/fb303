@@ -8,8 +8,8 @@ Build-Depends: debhelper (>= 8),
  perl (>= 5.8.0-7),
  php5,
  php5-dev,
- python-all,
- python-all-dev
+ python-all (>= 2.6.6-3),
+ python-all-dev (>= 2.6.6-3)
 Standards-Version: 3.8.2
 Homepage: http://thrift.apache.org/
 
