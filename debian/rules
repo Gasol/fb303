@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+JAVA_HOME := /usr/lib/jvm/default-java
 PYVERS := $(shell pyversions -r)
 VERSION=$(shell dpkg-parsechangelog | sed -ne 's/^Version: \(.*\)/\1/p')
 
