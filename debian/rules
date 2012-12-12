@@ -14,7 +14,7 @@ override_dh_auto_configure:
 	thrift --gen php --out php if/fb303.thrift
 
 override_dh_auto_build:
-	cd cpp && make install DESTDIR=$(CURDIR)/tmp
+	cd cpp && make install DESTDIR=$(CURDIR)/debian/tmp
 	cd java && ant -Dfb303.final.name=fb303-${VERSION}
 
 override_dh_auto_install:
