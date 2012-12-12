@@ -1,0 +1,97 @@
+--- a/java/build.xml
++++ b/java/build.xml
+@@ -21,12 +21,9 @@
+   xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+ 
+   <!-- project wide settings. All directories relative to basedir -->
+-  <property name="thrift.root" location="${basedir}/../../../"/>
+   <property name="fb303.artifactid" value="libfb303"/>
+   <property name="interface.dir" value="${basedir}/../if"/>
+-  <property name="thrift.java.dir" location="${thrift.root}/lib/java"/>
+-  <property name="build.tools.dir" location="${thrift.java.dir}/build/tools/"/>
+-  <property name="thrift_compiler" value="${thrift.root}/compiler/cpp/thrift"/> 
++  <property name="thrift_compiler" value="/usr/bin/thrift"/> 
+ 
+   <!-- inherit from the java build file for version and other properties -->
+   <property file="${thrift.java.dir}/build.properties" />
+@@ -61,6 +58,30 @@
+     <mkdir dir="${build.lib.dir}"/>
+   </target>
+ 
++  <path id="compile.classpath">
++    <pathelement location="/usr/share/java/libthrift-0.9.0.jar"/>
++    <pathelement location="/usr/share/java/slf4j-api.jar"/>
++    <pathelement location="/usr/share/java/slf4j-log4j.jar"/>
++  </path>
++
++  <path id="maven.classpath">
++    <pathelement location="/usr/share/java/maven-ant-tasks.jar"/>
++    <pathelement location="/usr/share/java/maven-project.jar"/>
++    <pathelement location="/usr/share/java/maven-core.jar"/>
++    <pathelement location="/usr/share/java/plexus-container-default.jar"/>
++    <pathelement location="/usr/share/java/plexus-utils.jar"/>
++    <pathelement location="/usr/share/java/plexus-interpolation.jar"/>
++    <pathelement location="/usr/share/java/maven-error-diagnostics.jar"/>
++    <pathelement location="/usr/share/java/classworlds.jar"/>
++    <pathelement location="/usr/share/java/wagon-provider-api.jar"/>
++    <pathelement location="/usr/share/java/maven-model.jar"/>
++    <pathelement location="/usr/share/java/maven-artifact.jar"/>
++    <pathelement location="/usr/share/java/maven-settings.jar"/>
++    <pathelement location="/usr/share/java/maven-archiver.jar"/>
++    <pathelement location="/usr/share/java/maven-plugin-api.jar"/>
++    <pathelement location="/usr/share/java/maven-plugin-descriptor.jar"/>
++  </path>
++
+   <!-- generate fb303 thrift code -->
+   <target name="generate">
+     <echo message="generating thrift fb303 files"/>
+@@ -70,15 +91,9 @@
+   </target>
+ 
+   <!-- compile the base and thrift generated code and jar them -->
+-  <target name="dist" depends="init,generate">
++  <target name="dist" depends="init,generate,mvn.init">
+     <echo message="Building ${fb303.final.name}.jar"/>
+-    <javac destdir="${build.classes.dir}" debug="on">
+-      <classpath>
+-        <pathelement location="${thrift.java.libthrift}"/>
+-        <fileset dir="${thrift.root}/lib/java/build/lib">
+-          <include name="*.jar"/>
+-        </fileset>
+-      </classpath>
++    <javac destdir="${build.classes.dir}" debug="on" classpathref="compile.classpath">
+       <src path="${src}"/>
+       <src path="${gen}"/>
+       <include name="**/*.java"/>
+@@ -100,20 +115,9 @@
+     <delete dir="${gen}"/>
+   </target>
+ 
+-  <target name="mvn.ant.tasks.download" depends="setup.init,mvn.ant.tasks.check" unless="mvn.ant.tasks.found">
+-    <get src="${mvn.ant.task.url}/${mvn.ant.task.jar}" dest="${build.tools.dir}/${mvn.ant.task.jar}" usetimestamp="true"/>
+-  </target>
+-
+-  <target name="mvn.ant.tasks.check">
+-    <condition property="mvn.ant.tasks.found">
+-      <typefound uri="antlib:org.apache.maven.artifact.ant" name="artifact"/>
+-    </condition>
+-  </target>
+-
+-  <target name="mvn.init" depends="mvn.ant.tasks.download" unless="mvn.finished">
+-    <echo message="${mvn.ant.task.jar}"/>
++  <target name="mvn.init">
+     <!-- Download mvn ant tasks, download dependencies, and setup pom file -->
+-    <typedef uri="antlib:org.apache.maven.artifact.ant" classpath="${build.tools.dir}/${mvn.ant.task.jar}"/>
++    <typedef uri="antlib:org.apache.maven.artifact.ant" classpathref="maven.classpath"/>
+ 
+     <!-- remote repositories used to download dependencies from -->
+     <artifact:remoteRepository id="central" url="${mvn.repo}"/>
+@@ -160,8 +164,6 @@
+ 
+     <!-- Generate the pom file -->
+     <artifact:writepom pomRefId="pom" file="${fb303.pom.xml}"/>
+-
+-    <property name="mvn.finished" value="true"/>
+   </target>
+ 
+   <macrodef name="signAndDeploy">
