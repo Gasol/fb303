@@ -22,3 +22,8 @@ override_dh_auto_install:
 		$$py setup.py --root=$(CURDIR)/debian/python-fb303--prefix=/usr \
 			--install-layout=deb \
 	done
+
+	# Perl
+	mkdir -p $(CURDIR)/debian/libfacebook-fb303-perl/usr/share/perl5
+	cp -r $(CURDIR)/perl/Facebook \
+		$(CURDIR)/debian/libfacebook-fb303-perl/usr/share/perl5
