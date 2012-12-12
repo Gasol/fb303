@@ -1,4 +1,16 @@
 #!/usr/bin/make -f
 
+VERSION=$(shell dpkg-parsechangelog | sed -ne 's/^Version: \(.*\)/\1/p')
+
 %:
-	dh $@ #DH7_ADDON#
+	dh $@ --with python-support
+
+override_dh_auto_configure:
+	./bootstrap.sh
+	./configure --prefix=/usr --with-thriftpath=/usr --disable-static
+	mkdir perl
+	/usr/bin/thrift --gen perl -o perl if/fb303.thrift
+
+override_dh_auto_build:
+	dh_auto_build
+	cd java && ant -Dfb303.final.name=fb303-${VERSION}
