@@ -44,6 +44,8 @@ override_dh_auto_install:
 	cp $(CURDIR)/php/FacebookBase.php \
 		$(CURDIR)/debian/libfb303-php/usr/share/php/FB303/
 
+	# Java
+	mh_installpoms -plibfb303-java
 
 override_dh_auto_clean:
 	-rm -rf perl
