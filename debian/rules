@@ -9,7 +9,7 @@ override_dh_auto_configure:
 	./bootstrap.sh
 	./configure --prefix=/usr --with-thriftpath=/usr --disable-static
 	mkdir perl
-	/usr/bin/thrift --gen perl -o perl if/fb303.thrift
+	thrift --gen perl --out perl if/fb303.thrift
 
 override_dh_auto_build:
 	dh_auto_build
