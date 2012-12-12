@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 8),
 Standards-Version: 3.8.2
 Homepage: http://thrift.apache.org/
 
-Package: php5-fb303
+Package: libfb303-php
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: PHP library for fb303
