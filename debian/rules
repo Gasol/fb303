@@ -42,5 +42,10 @@ override_dh_auto_install:
 	cp $(CURDIR)/php/FacebookBase.php \
 		$(CURDIR)/debian/libfb303-php/usr/share/php/FB303/
 
+
+override_dh_auto_clean:
+	-rm -rf perl
+	dh_auto_clean
+
 override_dh_auto_test:
 	# pass
