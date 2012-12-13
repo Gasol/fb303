@@ -5,11 +5,16 @@ Maintainer: Gasol Wu <gasol.wu@gmail.com>
 Build-Depends: debhelper (>= 8),
  ant,
  default-jdk,
+ libmaven-ant-tasks-java (>= 2.1.3),
+ libthrift-java,
+ libthrift-dev,
+ maven2,
  perl (>= 5.8.0-7),
  php5,
  php5-dev,
  python-all (>= 2.6.6-3),
- python-all-dev (>= 2.6.6-3)
+ python-all-dev (>= 2.6.6-3),
+ thrift-compiler
 Build-Depends-Indep: maven-repo-helper
 Standards-Version: 3.8.2
 Homepage: http://thrift.apache.org/
