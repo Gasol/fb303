@@ -21,7 +21,7 @@ Homepage: http://thrift.apache.org/
 
 Package: libfb303-php
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: php5-thrift, ${misc:Depends}
 Description: PHP library for fb303
  A standard interface to monitoring, dynamic options and configuration,
  uptime reports, activity, etc.
@@ -29,7 +29,7 @@ Description: PHP library for fb303
 Package: python-fb303
 Architecture: all
 Section: python
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: python-thrift, ${misc:Depends}
 Description: Python library for fb303
  A standard interface to monitoring, dynamic options and configuration,
  uptime reports, activity, etc.
@@ -37,7 +37,7 @@ Description: Python library for fb303
 Package: libfacebook-fb303-perl
 Architecture: all
 Section: perl
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libthrift-perl, ${misc:Depends}
 Description: Perl library for fb303
  A standard interface to monitoring, dynamic options and configuration,
  uptime reports, activity, etc.
@@ -45,7 +45,7 @@ Description: Perl library for fb303
 Package: libfb303-java
 Architecture: all
 Section: java
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libthrift-java, ${misc:Depends}
 Description: Java library for fb303
  A standard interface to monitoring, dynamic options and configuration,
  uptime reports, activity, etc.
