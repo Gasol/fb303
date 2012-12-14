@@ -2,7 +2,7 @@
 
 JAVA_HOME := /usr/lib/jvm/default-java
 PYVERS := $(shell pyversions -r)
-VERSION=$(shell dpkg-parsechangelog | sed -ne 's/^Version: \(.*\)/\1/p')
+VERSION = $(shell dpkg-parsechangelog | sed -ne 's/^Version: \([0-9\.]*\).*/\1/p')
 
 %:
 	dh $@ --with python2

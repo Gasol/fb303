@@ -5,7 +5,7 @@ set -e
 VERSION=$2
 ORIG_TAR=$3
 PACKAGE=`dpkg-parsechangelog | sed -n 's/^Source: //p'`
-DEBIAN_VER=`dpkg-parsechangelog | sed -ne 's/^Version: \(.*\)/\1/p'`
+DEBIAN_VER=`dpkg-parsechangelog | sed -ne 's/^Version: \([0-9\.]*\).*/\1/p'`
 TAR="${PACKAGE}_${DEBIAN_VER}.tar.gz"
 ORIG_TAR="${PACKAGE}_${DEBIAN_VER}.orig.tar.gz"
 DIR="${PACKAGE}_${VERSION}"
